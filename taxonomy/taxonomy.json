@@ -1,0 +1,757 @@
+{
+  "version": 1,
+  "frozen": "2026-06-12",
+  "keywords": [
+    {
+      "name": "Canada",
+      "definition": "Canadian companies, policy, or ecosystem",
+      "aliases": [
+        "Canadian"
+      ]
+    },
+    {
+      "name": "United States",
+      "definition": "US policy, politics, and companies",
+      "aliases": [
+        "US",
+        "USA",
+        "America",
+        "American"
+      ]
+    },
+    {
+      "name": "Europe & UK",
+      "definition": "EU, UK, and European policy and tech",
+      "aliases": [
+        "EU",
+        "Europe",
+        "European Union",
+        "UK",
+        "Britain"
+      ]
+    },
+    {
+      "name": "China",
+      "definition": "Chinese tech, policy, and competition",
+      "aliases": [
+        "Chinese"
+      ]
+    },
+    {
+      "name": "Global & Emerging Markets",
+      "definition": "Multilateral bodies, global trends, developing economies",
+      "aliases": [
+        "global south",
+        "emerging markets",
+        "G7",
+        "UN",
+        "multilateral"
+      ]
+    },
+    {
+      "name": "AI Models & Research",
+      "definition": "New models, AI labs, capabilities, AI science",
+      "aliases": [
+        "foundation models",
+        "frontier AI",
+        "AI research",
+        "LLMs"
+      ]
+    },
+    {
+      "name": "AI Adoption",
+      "definition": "Deployment of AI in firms, government, and sectors",
+      "aliases": [
+        "AI deployment",
+        "enterprise AI",
+        "AI in business",
+        "applied AI"
+      ]
+    },
+    {
+      "name": "AI Agents",
+      "definition": "Agentic AI, AI assistants, task automation",
+      "aliases": [
+        "agentic AI",
+        "AI assistants"
+      ]
+    },
+    {
+      "name": "AI Policy & Regulation",
+      "definition": "AI laws, national strategies, governance",
+      "aliases": [
+        "AI regulation",
+        "AI governance",
+        "AI strategy",
+        "AI law"
+      ]
+    },
+    {
+      "name": "AI Safety & Ethics",
+      "definition": "Alignment, bias, risk, responsible AI",
+      "aliases": [
+        "responsible AI",
+        "AI ethics",
+        "AI bias",
+        "AI risk",
+        "AI alignment"
+      ]
+    },
+    {
+      "name": "AI & Work",
+      "definition": "AI's impact on jobs, labour automation",
+      "aliases": [
+        "AI and jobs",
+        "automation and labour",
+        "AI job losses",
+        "future of work"
+      ]
+    },
+    {
+      "name": "AI Economics",
+      "definition": "AI valuations, bubble debate, macro effects of AI",
+      "aliases": [
+        "AI bubble",
+        "AI investment",
+        "economics of AI"
+      ]
+    },
+    {
+      "name": "AI Infrastructure",
+      "definition": "Compute buildout, AI chips deals, AI energy demand",
+      "aliases": [
+        "AI compute",
+        "AI chips",
+        "compute infrastructure"
+      ]
+    },
+    {
+      "name": "Semiconductors",
+      "definition": "Chips, fabs, chipmakers, chip supply",
+      "aliases": [
+        "chips",
+        "chipmakers",
+        "fabs",
+        "chip industry"
+      ]
+    },
+    {
+      "name": "Data Centres",
+      "definition": "Data-centre construction, siting, energy use",
+      "aliases": [
+        "data centers",
+        "datacentres",
+        "datacenters"
+      ]
+    },
+    {
+      "name": "Cloud Computing",
+      "definition": "Cloud market, providers, cloud policy",
+      "aliases": [
+        "cloud",
+        "cloud market"
+      ]
+    },
+    {
+      "name": "Quantum",
+      "definition": "Quantum computing and quantum tech",
+      "aliases": [
+        "quantum computing",
+        "quantum tech"
+      ]
+    },
+    {
+      "name": "Cybersecurity",
+      "definition": "Hacks, breaches, security tools and policy",
+      "aliases": [
+        "security",
+        "hacks",
+        "breaches",
+        "infosec"
+      ]
+    },
+    {
+      "name": "Data Privacy",
+      "definition": "Privacy law, data protection, surveillance",
+      "aliases": [
+        "privacy",
+        "GDPR",
+        "surveillance",
+        "data protection"
+      ]
+    },
+    {
+      "name": "Digital Sovereignty",
+      "definition": "National control over digital infrastructure and data",
+      "aliases": [
+        "tech sovereignty",
+        "sovereign AI",
+        "sovereign cloud"
+      ]
+    },
+    {
+      "name": "Digital Platforms",
+      "definition": "Social media, marketplaces, apps, platform business",
+      "aliases": [
+        "social media",
+        "platforms",
+        "online platforms"
+      ]
+    },
+    {
+      "name": "Big Tech",
+      "definition": "Strategy and conduct of the major tech firms",
+      "aliases": [
+        "large tech companies",
+        "tech giants"
+      ]
+    },
+    {
+      "name": "Antitrust & Competition",
+      "definition": "Competition policy, monopoly, market power",
+      "aliases": [
+        "competition policy",
+        "monopoly",
+        "antitrust"
+      ]
+    },
+    {
+      "name": "Content & Copyright",
+      "definition": "Copyright, AI training data rights, creator rights",
+      "aliases": [
+        "copyright",
+        "AI training data",
+        "licensing"
+      ]
+    },
+    {
+      "name": "Startup Funding",
+      "definition": "Individual funding rounds, seed to late stage",
+      "aliases": [
+        "funding round",
+        "fundraising",
+        "raises",
+        "seed round",
+        "series A"
+      ]
+    },
+    {
+      "name": "Venture Capital",
+      "definition": "VC firms, funds, and investment trends",
+      "aliases": [
+        "VC",
+        "venture investment",
+        "venture funds"
+      ]
+    },
+    {
+      "name": "Mergers & Acquisitions",
+      "definition": "M&A, acquihires, takeovers",
+      "aliases": [
+        "M&A",
+        "acquisitions",
+        "acquihire",
+        "takeover"
+      ]
+    },
+    {
+      "name": "IPOs & Public Markets",
+      "definition": "Listings, public-company finance, stock markets",
+      "aliases": [
+        "IPO",
+        "stock market",
+        "public markets",
+        "listings"
+      ]
+    },
+    {
+      "name": "Scaleups & Unicorns",
+      "definition": "Late-stage growth, unicorn milestones, ARR milestones",
+      "aliases": [
+        "unicorn",
+        "scaleup",
+        "scale-up",
+        "growth stage"
+      ]
+    },
+    {
+      "name": "Startup Ecosystem",
+      "definition": "Community, accelerators, incubators, awards, events",
+      "aliases": [
+        "incubators",
+        "accelerators",
+        "startup community"
+      ]
+    },
+    {
+      "name": "Layoffs & Restructuring",
+      "definition": "Job cuts, downsizing, corporate restructuring",
+      "aliases": [
+        "layoffs",
+        "job cuts",
+        "downsizing"
+      ]
+    },
+    {
+      "name": "Fintech",
+      "definition": "Financial technology, payments, banking tech",
+      "aliases": [
+        "payments",
+        "banking tech",
+        "financial technology"
+      ]
+    },
+    {
+      "name": "Crypto & Blockchain",
+      "definition": "Crypto assets, stablecoins, web3",
+      "aliases": [
+        "crypto",
+        "stablecoins",
+        "blockchain",
+        "bitcoin",
+        "web3"
+      ]
+    },
+    {
+      "name": "Institutional Capital",
+      "definition": "Pension funds, sovereign funds, public investment banks",
+      "aliases": [
+        "pension funds",
+        "CPP",
+        "sovereign wealth",
+        "BDC",
+        "institutional investors"
+      ]
+    },
+    {
+      "name": "Industrial Policy",
+      "definition": "Sectoral strategy, subsidies, state economic intervention",
+      "aliases": [
+        "industrial strategy",
+        "sectoral policy",
+        "state intervention"
+      ]
+    },
+    {
+      "name": "Innovation Policy",
+      "definition": "Innovation programs, strategy, and policy design",
+      "aliases": [
+        "innovation strategy",
+        "innovation programs"
+      ]
+    },
+    {
+      "name": "Mission-Driven Innovation",
+      "definition": "Mission-oriented policy, moonshots, grand challenges",
+      "aliases": [
+        "mission-oriented innovation",
+        "moonshots",
+        "grand challenges",
+        "missions"
+      ]
+    },
+    {
+      "name": "Public Procurement",
+      "definition": "Government purchasing as an innovation/industry lever",
+      "aliases": [
+        "government procurement",
+        "buy Canadian",
+        "defence procurement"
+      ]
+    },
+    {
+      "name": "R&D Funding",
+      "definition": "Public and private research funding, grants",
+      "aliases": [
+        "research funding",
+        "science funding",
+        "grants",
+        "research investment"
+      ]
+    },
+    {
+      "name": "Research Policy",
+      "definition": "How science is organized, evaluated, and governed",
+      "aliases": [
+        "science policy",
+        "research assessment",
+        "evidence-informed policy",
+        "metascience"
+      ]
+    },
+    {
+      "name": "Tax & Incentives",
+      "definition": "Tax credits, investment incentives, subsidies",
+      "aliases": [
+        "tax credits",
+        "subsidies",
+        "incentives",
+        "SR&ED"
+      ]
+    },
+    {
+      "name": "SME Policy",
+      "definition": "Small and medium business support and performance",
+      "aliases": [
+        "SMEs",
+        "small business",
+        "mittelstand"
+      ]
+    },
+    {
+      "name": "Regional Innovation",
+      "definition": "Regional development, clusters, smart specialization",
+      "aliases": [
+        "clusters",
+        "regional development",
+        "smart specialization",
+        "innovation districts"
+      ]
+    },
+    {
+      "name": "Productivity",
+      "definition": "Productivity growth, gaps, and drivers",
+      "aliases": [
+        "productivity crisis",
+        "productivity gap"
+      ]
+    },
+    {
+      "name": "Economic Growth",
+      "definition": "Growth, GDP, macroeconomic performance and policy",
+      "aliases": [
+        "macroeconomics",
+        "GDP",
+        "economic performance",
+        "fiscal policy"
+      ]
+    },
+    {
+      "name": "State Capacity",
+      "definition": "Government capability, public-sector innovation, regulatory reform",
+      "aliases": [
+        "public sector innovation",
+        "government capacity",
+        "regulatory reform",
+        "govtech"
+      ]
+    },
+    {
+      "name": "Universities & Research",
+      "definition": "Higher education institutions and academic research",
+      "aliases": [
+        "higher education",
+        "academia",
+        "universities",
+        "research institutions"
+      ]
+    },
+    {
+      "name": "Commercialization",
+      "definition": "Tech transfer, spinouts, lab-to-market",
+      "aliases": [
+        "tech transfer",
+        "spinouts",
+        "IP commercialization",
+        "lab to market"
+      ]
+    },
+    {
+      "name": "Intellectual Property",
+      "definition": "Patents, IP strategy and protection",
+      "aliases": [
+        "IP",
+        "patents",
+        "patent policy"
+      ]
+    },
+    {
+      "name": "Talent & Skills",
+      "definition": "Workforce skills, training, STEM education",
+      "aliases": [
+        "skills",
+        "workforce development",
+        "upskilling",
+        "STEM",
+        "education"
+      ]
+    },
+    {
+      "name": "Brain Drain & Migration",
+      "definition": "Talent mobility, immigration, retention",
+      "aliases": [
+        "immigration",
+        "talent mobility",
+        "brain drain",
+        "emigration"
+      ]
+    },
+    {
+      "name": "Labour Market",
+      "definition": "Employment data, hiring trends, job market",
+      "aliases": [
+        "employment",
+        "jobs",
+        "labour force",
+        "hiring"
+      ]
+    },
+    {
+      "name": "Clean Energy",
+      "definition": "Renewables deployment: solar, wind, hydro, geothermal",
+      "aliases": [
+        "renewables",
+        "solar",
+        "wind",
+        "geothermal",
+        "renewable energy"
+      ]
+    },
+    {
+      "name": "Cleantech",
+      "definition": "Climate-tech startups and innovation",
+      "aliases": [
+        "climate tech",
+        "greentech",
+        "green innovation"
+      ]
+    },
+    {
+      "name": "Climate Policy",
+      "definition": "Climate strategy, net zero, emissions rules, adaptation",
+      "aliases": [
+        "net zero",
+        "emissions policy",
+        "decarbonization",
+        "climate adaptation"
+      ]
+    },
+    {
+      "name": "Energy & Grid",
+      "definition": "Electricity systems, grid, utilities, energy markets",
+      "aliases": [
+        "grid",
+        "electricity",
+        "utilities",
+        "energy transition",
+        "energy markets"
+      ]
+    },
+    {
+      "name": "Nuclear & Fusion",
+      "definition": "Nuclear power and fusion energy",
+      "aliases": [
+        "fusion",
+        "nuclear power",
+        "SMRs"
+      ]
+    },
+    {
+      "name": "EVs & Batteries",
+      "definition": "Electric vehicles and the battery industry",
+      "aliases": [
+        "electric vehicles",
+        "batteries",
+        "EV charging",
+        "battery industry"
+      ]
+    },
+    {
+      "name": "Critical Minerals",
+      "definition": "Mining, minerals, resource value chains",
+      "aliases": [
+        "mining",
+        "rare earths",
+        "minerals",
+        "lithium"
+      ]
+    },
+    {
+      "name": "Carbon Management",
+      "definition": "Carbon capture, removal, markets, accounting",
+      "aliases": [
+        "carbon capture",
+        "CCUS",
+        "direct air capture",
+        "carbon markets",
+        "hydrogen"
+      ]
+    },
+    {
+      "name": "Biotech & Health",
+      "definition": "Life sciences, pharma, healthtech, medtech",
+      "aliases": [
+        "healthtech",
+        "life sciences",
+        "pharma",
+        "medtech",
+        "biotech",
+        "health innovation"
+      ]
+    },
+    {
+      "name": "Defence Tech",
+      "definition": "Defence industry, military tech, dual-use",
+      "aliases": [
+        "defense tech",
+        "military tech",
+        "dual-use",
+        "defence industry"
+      ]
+    },
+    {
+      "name": "Space",
+      "definition": "Space industry, rockets, satellites",
+      "aliases": [
+        "space tech",
+        "satellites",
+        "rockets",
+        "aerospace"
+      ]
+    },
+    {
+      "name": "Robotics & Autonomy",
+      "definition": "Robots, self-driving vehicles, drones",
+      "aliases": [
+        "autonomous vehicles",
+        "self-driving",
+        "drones",
+        "robots"
+      ]
+    },
+    {
+      "name": "Agtech & Food",
+      "definition": "Agriculture and food innovation",
+      "aliases": [
+        "agriculture",
+        "food tech",
+        "farming"
+      ]
+    },
+    {
+      "name": "Telecom",
+      "definition": "Telecommunications and connectivity",
+      "aliases": [
+        "telecommunications",
+        "5G",
+        "broadband"
+      ]
+    },
+    {
+      "name": "Consumer Tech",
+      "definition": "Devices, gadgets, consumer apps and services",
+      "aliases": [
+        "gadgets",
+        "devices",
+        "consumer apps"
+      ]
+    },
+    {
+      "name": "Enterprise Software",
+      "definition": "B2B software, SaaS, developer tools",
+      "aliases": [
+        "SaaS",
+        "B2B software",
+        "developer tools",
+        "dev tools"
+      ]
+    },
+    {
+      "name": "Media & Creators",
+      "definition": "Streaming, gaming, publishing, creator economy",
+      "aliases": [
+        "streaming",
+        "gaming",
+        "creator economy",
+        "publishing",
+        "entertainment"
+      ]
+    },
+    {
+      "name": "Trade & Tariffs",
+      "definition": "Trade policy, tariffs, trade agreements",
+      "aliases": [
+        "tariffs",
+        "trade policy",
+        "trade war",
+        "trade agreements"
+      ]
+    },
+    {
+      "name": "Supply Chains",
+      "definition": "Supply-chain resilience, reshoring, onshoring",
+      "aliases": [
+        "reshoring",
+        "onshoring",
+        "supply chain resilience",
+        "nearshoring"
+      ]
+    },
+    {
+      "name": "Export Controls",
+      "definition": "Tech export restrictions and decoupling",
+      "aliases": [
+        "decoupling",
+        "tech restrictions",
+        "chip controls"
+      ]
+    },
+    {
+      "name": "Foreign Investment",
+      "definition": "FDI, investment screening, foreign ownership",
+      "aliases": [
+        "FDI",
+        "investment screening",
+        "foreign ownership"
+      ]
+    },
+    {
+      "name": "Tech Geopolitics",
+      "definition": "Technology competition between powers",
+      "aliases": [
+        "tech rivalry",
+        "technology competition",
+        "geopolitics of tech",
+        "geoeconomics"
+      ]
+    },
+    {
+      "name": "Tech & Society",
+      "definition": "Social impacts of technology, democracy, information",
+      "aliases": [
+        "democracy",
+        "misinformation",
+        "social impact",
+        "civil society"
+      ]
+    },
+    {
+      "name": "Inequality & Inclusion",
+      "definition": "Distributional effects, inclusive innovation, accessibility",
+      "aliases": [
+        "inclusion",
+        "inclusive innovation",
+        "accessibility",
+        "equity"
+      ]
+    },
+    {
+      "name": "Indigenous Innovation",
+      "definition": "Indigenous-led business and innovation",
+      "aliases": [
+        "First Nations",
+        "Indigenous",
+        "Indigenous-led"
+      ]
+    },
+    {
+      "name": "Social Innovation",
+      "definition": "Social-purpose innovation, common good, welfare innovation",
+      "aliases": [
+        "common good",
+        "social purpose",
+        "welfare innovation"
+      ]
+    }
+  ]
+}
