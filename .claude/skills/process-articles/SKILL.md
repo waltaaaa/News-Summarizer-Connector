@@ -61,6 +61,7 @@ All commands run from the repo root. Requires `taxonomy/taxonomy.json` to exist 
    For IDs that fail a second time, append a `needs_review` ledger line for each:
    `python3 -c "import sys; sys.path.insert(0,'scripts'); import common,time,json; common.append_jsonl(common.LEDGER_PATH, [{'id': i, 'status': 'needs_review', 'reason': 'failed validation twice', 'ts': time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())} for i in ['<id1>','<id2>']])"`
 
-7. **Export + final report**: `python3 scripts/export_csv.py` then `python3 scripts/status.py`.
+7. **Export + final report**: `python3 scripts/export_csv.py`, `python3 scripts/render_graph.py`
+   (regenerates the interactive `output/graph.html`), then `python3 scripts/status.py`.
    Tell the user: how many processed this run, accepted/rejected/needs_review counts,
    full-text vs headline-only split, top keywords, and how many articles remain pending.
