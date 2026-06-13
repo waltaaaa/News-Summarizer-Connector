@@ -30,9 +30,9 @@ def seed_research_database():
             metadatas=[{"title": title}],
             ids=[filename]
         )
-        print(f"[✔] Successfully indexed: {filename}")
+        print(f"[OK] Successfully indexed: {filename}")
 
-    print("[✔] Database optimization step finalized.")
+    print("[OK] Database optimization step finalized.")
 
 if __name__ == "__main__":
     seed_research_database()

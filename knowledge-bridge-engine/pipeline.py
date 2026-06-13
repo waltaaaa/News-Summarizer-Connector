@@ -145,7 +145,7 @@ Our analysis draws direct evidence from our primary institutional assets:
 """
     with open(target_path, "w", encoding="utf-8") as f:
         f.write(markdown_payload)
-    print(f"[✔] Successfully exported brief file: {filename}")
+    print(f"[OK] Successfully exported brief file: {filename}")
 
 # --- 7. Pipeline Execution Controller ---
 
@@ -197,7 +197,7 @@ def main():
         matched_papers = match_theme_to_research(cluster.distinctive_keywords, cluster.primary_theme)
         write_brief_to_obsidian(cluster, matched_papers, vault_dir)
 
-    print("[✔] Knowledge Bridge Execution Complete.")
+    print("[OK] Knowledge Bridge Execution Complete.")
 
 if __name__ == "__main__":
     main()
