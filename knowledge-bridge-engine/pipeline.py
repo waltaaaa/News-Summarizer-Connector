@@ -24,7 +24,19 @@ class ConsolidatedAnalysis(BaseModel):
 
 # --- 2. Initial Setup and Client Initializations ---
 
-client = genai.Client()
+# The Gemini client is created lazily so commands that never reach the LLM stage
+# (e.g. --help, empty links.txt) do not require GEMINI_API_KEY to be set.
+_genai_client: Optional[genai.Client] = None
+
+def get_genai_client() -> genai.Client:
+    global _genai_client
+    if _genai_client is None:
+        if not os.environ.get("GEMINI_API_KEY") and not os.environ.get("GOOGLE_API_KEY"):
+            print("[!] GEMINI_API_KEY (or GOOGLE_API_KEY) is not set. The trend extraction stage cannot run.", file=sys.stderr)
+            sys.exit(1)
+        _genai_client = genai.Client()
+    return _genai_client
+
 chroma_client = chromadb.PersistentClient(path="./chroma_db")
 research_collection = chroma_client.get_or_create_collection(name="internal_research")
 
@@ -80,7 +92,7 @@ def extract_macro_themes(articles: List[dict], start_date: str, end_date: str) -
     {master_text_input}
     """
 
-    response = client.models.generate_content(
+    response = get_genai_client().models.generate_content(
         model='gemini-2.5-flash',
         contents=prompt,
         config=types.GenerateContentConfig(
