@@ -2,3 +2,6 @@ data/cache/
 data/batches/
 __pycache__/
 *.pyc
+
+# Knowledge Bridge Engine artifacts
+knowledge-bridge-engine/chroma_db/

@@ -1,0 +1,2 @@
+# Knowledge Bridge input queue: one news article URL per line.
+# Lines beginning with # are ignored by pipeline.py.
