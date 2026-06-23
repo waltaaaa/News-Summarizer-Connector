@@ -29,6 +29,12 @@ then `git pull` after each processing session. Open the `vault/` folder as an Ob
 (Obsidian → Open folder as vault). In graph view, create color groups for `path:articles/news`,
 `path:keywords` (and later `path:articles/insights`) to see the map.
 
+## Slide deck
+
+`docs/slides.html` is a self-contained, offline slide deck (open it in any browser — arrow keys
+to navigate, `F` for fullscreen) explaining what Obsidian is, how this project uses it, and how
+it works in tandem with the Claude Code agent stack, with workflow diagrams of the pipeline.
+
 ## Usage (in a Claude Code session)
 
 | Command | What it does |
