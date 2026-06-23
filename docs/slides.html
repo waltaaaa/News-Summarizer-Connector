@@ -146,6 +146,19 @@
     <p class="muted">Deterministic plumbing in Python; judgement (summaries &amp; tags) delegated to fast Haiku subagents; everything written as Markdown Obsidian reads natively. <b>Runs entirely on a Claude subscription — no API key.</b></p>
   </section>
 
+  <!-- 3b — WHY OBSIDIAN (ARCHITECTURE) -->
+  <section class="slide">
+    <span class="tag o">The architecture</span>
+    <h2><span class="dot" style="background:var(--accent2)"></span>Why Obsidian, not a database?</h2>
+    <p class="lead">For a corpus meant to outlive any single tool, the system of record is plain text on disk — not rows in a service we rent.</p>
+    <div class="grid cols-3" style="margin-top:26px">
+      <div class="card"><div class="ic">📄</div><h3>Local-first Markdown</h3><p class="muted">Every note is a <code>.md</code> file with YAML frontmatter. No server, no schema migrations, no cloud dependency — readable in any editor, today and in ten years.</p></div>
+      <div class="card"><div class="ic">🔁</div><h3>Git is the sync layer</h3><p class="muted">Because notes are files, version control <i>is</i> the database. The agent commits &amp; pushes; you <code>git pull</code> and open the vault. Full history, diffable, conflict-aware.</p></div>
+      <div class="card"><div class="ic">🔓</div><h3>Zero lock-in</h3><p class="muted">Obsidian is a <i>viewer</i> over the files, not the system of record. Uninstall it tomorrow and the knowledge graph still exists as plain text the org owns.</p></div>
+    </div>
+    <p style="margin-top:24px"><b>Director's lens:</b> the durable asset is the vault — versioned plain text — with <b>no runtime, no hosting bill, and no vendor between us and our data.</b></p>
+  </section>
+
   <!-- 4 — VAULT ANATOMY -->
   <section class="slide">
     <span class="tag o">How we use it</span>
@@ -160,26 +173,92 @@
         <p class="muted" style="margin-top:14px">62 keyword hubs &nbsp;·&nbsp; 100 article notes in the pilot &nbsp;·&nbsp; both grow as the pipeline runs.</p>
       </div>
       <div class="card" style="font-family:'SF Mono',Consolas,monospace;font-size:13px;line-height:1.5;color:#cdd6f7;overflow:auto">
-<span style="color:#ffce85">--- frontmatter ---</span>
+<span style="color:#7ff0e4">vault/</span>
+├── Home.md            <span style="color:#9aa6c4">entry point + graph tips</span>
+├── articles/news/
+│   ├── 2026-06-08 … (n-96a1e9a4).md
+│   ├── 2026-06-08 … (n-23eb2e47).md
+│   └── …              <span style="color:#9aa6c4">100 article notes</span>
+└── keywords/
+    ├── AI Adoption.md
+    ├── Data Centres.md
+    ├── Canada.md
+    └── …              <span style="color:#9aa6c4">62 keyword hubs</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4b — INSIDE AN ARTICLE NOTE -->
+  <section class="slide">
+    <span class="tag o">How we use it</span>
+    <h2><span class="dot" style="background:var(--accent2)"></span>Inside an article note</h2>
+    <div class="grid cols-2" style="margin-top:6px">
+      <div>
+        <p>One Markdown file per article — frontmatter Obsidian parses natively, then three fixed sections:</p>
+        <ul>
+          <li><code>id</code> — stable <code>n-&lt;sha1(url)[:12]&gt;</code>; dedups re-imports.</li>
+          <li><code>headline · source · url · date</code> — provenance, verbatim.</li>
+          <li><code>content_basis</code> — <code>full-text</code> or <code>headline-only</code>.</li>
+          <li><code>keywords</code> (1–5, canonical) &nbsp;·&nbsp; <code>entities</code> (0–4).</li>
+          <li><b>## Summary</b> ≤400 &nbsp;·&nbsp; <b>## Key Takeaway</b> ≤300 &nbsp;·&nbsp; <b>## Keywords</b> → <code>[[wikilinks]]</code>.</li>
+        </ul>
+        <p class="muted" style="margin-top:12px">Filename: <code>YYYY-MM-DD Headline (id).md</code> — chronological &amp; unique.</p>
+      </div>
+      <div class="card" style="font-family:'SF Mono',Consolas,monospace;font-size:13px;line-height:1.5;color:#cdd6f7;overflow:auto">
+<span style="color:#ffce85">---</span>
 id: n-0b11b0e5d85b
 type: news-article
+headline: "Cohere signs exploratory AI
+  agreement with Québec government"
 source: "Beta Kit"
+date: 2026-06-09
+content_basis: headline-only
 keywords: ["Canada", "AI Adoption",
   "AI Policy &amp; Regulation"]
 entities: ["Cohere"]
 <span style="color:#ffce85">---</span>
-
 <span style="color:#7ff0e4">## Summary</span>
-Cohere signs an exploratory AI
+Cohere enters an exploratory AI
 agreement with the Québec government.
-
 <span style="color:#7ff0e4">## Key Takeaway</span>
 Signals a push to position Canada
 as an AI hub.
-
 <span style="color:#7ff0e4">## Keywords</span>
 [[Canada]] · [[AI Adoption]] ·
 [[AI Policy &amp; Regulation]]
+      </div>
+    </div>
+  </section>
+
+  <!-- 4c — KEYWORD HUBS AS DASHBOARDS -->
+  <section class="slide">
+    <span class="tag o">How we use it</span>
+    <h2><span class="dot" style="background:var(--accent2)"></span>Keyword hubs become dashboards — for free</h2>
+    <div class="grid cols-2" style="margin-top:6px">
+      <div>
+        <p>One hub note per taxonomy term, in <code>vault/keywords/</code>:</p>
+        <ul>
+          <li><code>ensure_hub_notes()</code> writes the hub the <b>first time</b> any article cites the keyword — idempotent; it skips one that already exists.</li>
+          <li>All we author is frontmatter <code>type: keyword</code> + the one-line taxonomy definition.</li>
+          <li>Every note that links <code>[[Data Centres]]</code> then appears in that hub's <b>backlinks</b> automatically — <b>Obsidian builds the dashboard; we write nothing per-article into the hub.</b></li>
+          <li>In the graph, a hub's size scales with its backlink count, so the busiest themes are visually obvious.</li>
+        </ul>
+      </div>
+      <div class="card" style="font-family:'SF Mono',Consolas,monospace;font-size:13px;line-height:1.5;color:#cdd6f7;overflow:auto">
+<span style="color:#9aa6c4"># vault/keywords/Data Centres.md</span>
+<span style="color:#ffce85">---</span>
+type: keyword
+<span style="color:#ffce85">---</span>
+
+<span style="color:#7ff0e4"># Data Centres</span>
+Data-centre construction, siting,
+energy use
+
+<span style="color:#9aa6c4">▾ Backlinks (7)  — built by Obsidian</span>
+ · Sobering numbers on data centres'…
+ · The business of AI's 4 harsh…
+ · Power-hungry AI is reshaping the grid
+ · …
       </div>
     </div>
   </section>
@@ -231,6 +310,17 @@ as an AI hub.
       <span><i class="sw" style="background:var(--accent2)"></i> Keyword hub</span>
       <span><i class="sw" style="background:var(--accent3)"></i> Bridge between themes</span>
     </div>
+  </section>
+
+  <!-- 5b — TWO WAYS TO SEE THE GRAPH -->
+  <section class="slide">
+    <span class="tag o">How we use it</span>
+    <h2><span class="dot" style="background:var(--accent2)"></span>Two ways to see the same graph</h2>
+    <div class="grid cols-2" style="margin-top:6px">
+      <div class="card"><div class="ic">🕸️</div><h3>Obsidian graph view — native</h3><p class="muted">Nodes are notes, edges are <code>[[wikilinks]]</code>. Colour groups split folders (<code>path:articles/news</code> vs <code>path:keywords</code>); a local graph per note; live filter &amp; zoom. <b>Zero code — it's just the links.</b></p></div>
+      <div class="card"><div class="ic">🌐</div><h3><code>output/graph.html</code> — standalone</h3><p class="muted"><code>render_graph.py</code> reads the ledger and emits a self-contained force-directed canvas — <b>86 KB, no Obsidian, no server.</b> Keyword nodes gold &amp; sized by article count; article nodes blue; teal edges; search + click-for-details.</p></div>
+    </div>
+    <p style="margin-top:22px"><b>Same structure, two audiences:</b> the article → keyword graph serves Obsidian users <i>and</i> anyone with a browser — so the corpus can be shared without installing anything.</p>
   </section>
 
   <!-- 6 — THE AGENT STACK -->
@@ -370,7 +460,7 @@ as an AI hub.
   <section class="slide">
     <span class="tag d">The connective tissue</span>
     <h2><span class="dot" style="background:var(--accent3)"></span>The controlled taxonomy</h2>
-    <p class="lead">~78 frozen keywords are the <b>shared vocabulary</b> that makes the graph cohere — and the bridge to the future insight-articles list.</p>
+    <p class="lead">78 frozen keywords (62 in use today) are the <b>shared vocabulary</b> that makes the graph cohere — and the bridge to the future insight-articles list.</p>
     <div class="grid cols-2" style="margin-top:18px">
       <div>
         <ul>
@@ -390,6 +480,21 @@ as an AI hub.
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- 9b — OBSIDIAN THROUGHOUT THE PIPELINE -->
+  <section class="slide">
+    <span class="tag o">In tandem</span>
+    <h2><span class="dot" style="background:var(--accent2)"></span>Obsidian threads through every stage</h2>
+    <p class="lead">Obsidian isn't a final export step — its primitives are the target the whole pipeline writes toward.</p>
+    <ul style="margin-top:20px;line-height:1.85">
+      <li><code>extract_articles</code> &nbsp;→&nbsp; the stable <code>id</code> becomes the note's frontmatter <code>id</code> <i>and</i> its filename suffix.</li>
+      <li><b>Haiku tagging</b> &nbsp;→&nbsp; each chosen keyword becomes a <code>[[wikilink]]</code> in the note body.</li>
+      <li><code>ingest_results</code> &nbsp;→&nbsp; writes <code>vault/articles/news/*.md</code> and ensures the <code>vault/keywords/*.md</code> hubs exist.</li>
+      <li><b>Obsidian</b> &nbsp;→&nbsp; backlinks &amp; the graph view <i>assemble themselves</i> from those links — no extra build step.</li>
+      <li><code>render_graph</code> &nbsp;→&nbsp; mirrors the very same graph to <code>output/graph.html</code> for non-Obsidian viewers.</li>
+    </ul>
+    <p class="muted" style="margin-top:16px">Every stage either produces a vault primitive or reads one — Obsidian is the backbone, not the afterthought.</p>
   </section>
 
   <!-- 10 — IN TANDEM / THE LOOP -->

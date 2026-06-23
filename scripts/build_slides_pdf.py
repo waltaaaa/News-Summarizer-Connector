@@ -21,7 +21,7 @@ OUT_PDF = ROOT / "docs" / "Obsidian-and-the-Agent-Stack.pdf"
 
 html = SRC.read_text()
 sections = re.findall(r'(<section class="slide.*?</section>)', html, flags=re.S)
-assert len(sections) == 12, f"expected 12 slides, got {len(sections)}"
+assert len(sections) >= 12, f"expected >=12 slides, got {len(sections)}"
 body = "\n".join(sections)
 
 # 1. strip emoji (corporate look) and the icon blocks that held them
@@ -50,13 +50,13 @@ VARS = {
     "var(--bg)": "#F6F8FC", "var(--panel)": "#FFFFFF", "var(--ink)": "#12263F",
     "var(--muted)": "#5B6B82", "var(--accent2)": "#0FA3A3", "var(--accent3)": "#E0902B",
     "var(--accent)": "#1E6FE0", "var(--line)": "#D7DFEA", "var(--ok)": "#1E9E62",
-    "var(--warn)": "#D64550", "var(--font)": '"Segoe UI",sans-serif',
+    "var(--warn)": "#D64550", "var(--font)": '"Liberation Sans",sans-serif',
 }
 for k, v in VARS.items():
     body = body.replace(k, v)
 body = re.sub(r"clamp\(([^)]*)\)", lambda m: m.group(1).split(",")[-1].strip(), body)
 body = body.replace("Consolas,monospace;font-size:13px;line-height:1.5",
-                    "Consolas,monospace;font-size:12.5px;line-height:1.55;white-space:pre-wrap")
+                    "Consolas,monospace;font-size:12px;line-height:1.42;white-space:pre-wrap")
 
 # 4. beacon / signal-wave brand mark + a one-line title
 BEACON = ('<svg width="120" height="120" viewBox="0 0 120 120" style="margin-bottom:6px" '
@@ -72,37 +72,38 @@ body = body.replace('<section class="slide center">',
 STYLE = """
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:#F6F8FC;color:#12263F;
-  font-family:"Segoe UI",Inter,"Helvetica Neue",Arial,sans-serif;}
+  font-family:"Liberation Sans","Segoe UI",Arial,sans-serif;}
 @page{size:1280px 720px;margin:0}
-.slide{position:relative;width:1280px;height:720px;padding:54px 76px 64px;
+.slide{position:relative;width:1280px;height:720px;padding:50px 88px 58px;
   display:flex;flex-direction:column;overflow:hidden;page-break-after:always;background:#F6F8FC}
 .slide:last-child{page-break-after:auto}
 .slide::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;
   background:linear-gradient(90deg,#0E2A47,#1E6FE0 55%,#0FA3A3)}
-.slide::after{content:"SIGNAL49 RESEARCH";position:absolute;right:76px;bottom:24px;
+.slide::after{content:"SIGNAL49 RESEARCH";position:absolute;right:88px;bottom:26px;
   font-size:10.5px;letter-spacing:2.5px;color:#9AA8BC;font-weight:700}
 .slide.center{align-items:center;justify-content:center;text-align:center}
 h1{font-size:50px;line-height:1.06;margin:0 0 16px;font-weight:800;letter-spacing:-.6px;color:#0E2A47}
 .slide.center h1{font-size:44px;margin:10px auto 30px}
 .slide.title h1{white-space:nowrap;font-size:42px}
 .slide.center .lead{margin:0 auto}
-h2{font-size:34px;margin:0 0 16px;font-weight:750;letter-spacing:-.3px;color:#0E2A47}
+h2{font-size:33px;margin:0 0 22px;font-weight:750;letter-spacing:-.3px;color:#0E2A47}
 h2 .dot{display:inline-block;width:.5em;height:.5em;border-radius:50%;margin-right:.45em;vertical-align:middle}
-p,li{font-size:18px;line-height:1.5;color:#33425B}
+p,li{font-size:18px;line-height:1.55;color:#33425B}
 .muted{color:#5B6B82}
-.lead{font-size:22px;color:#33425B;max-width:64ch;line-height:1.45}
-ul{margin:.2em 0;padding-left:1.1em}
-li{margin:.36em 0}
+.lead{font-size:22px;color:#33425B;max-width:66ch;line-height:1.5;margin:0 0 4px}
+ul{margin:.2em 0;padding-left:1.15em}
+li{margin:.42em 0}
 li b{color:#0E2A47}
 .kbd{font:600 13px sans-serif;background:#EEF2F8;border:1px solid #D7DFEA;border-radius:6px;padding:2px 8px;color:#5B6B82}
 code{background:#EEF2F8;border:1px solid #DCE3ED;border-radius:5px;padding:1px 6px;
   font-family:"DejaVu Sans Mono",Consolas,monospace;font-size:.82em;color:#1E4D86}
-.grid{display:grid;gap:18px}
+.grid{display:grid;gap:22px}
 .cols-2{grid-template-columns:1fr 1fr}
 .cols-3{grid-template-columns:1fr 1fr 1fr}
-.card{background:#FFFFFF;border:1px solid #DCE3ED;border-radius:12px;padding:16px 18px;
+.card{background:#FFFFFF;border:1px solid #DCE3ED;border-radius:12px;padding:18px 22px;
   box-shadow:0 1px 2px rgba(14,42,71,.05)}
-.card h3{margin:.1em 0 .35em;font-size:20px;color:#0E2A47}
+.card h3{margin:.1em 0 .4em;font-size:20px;color:#0E2A47;line-height:1.2}
+.card p{font-size:17px;line-height:1.5}
 .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
   padding:4px 11px;border-radius:6px;margin-bottom:14px}
 .tag.a{background:rgba(30,111,224,.10);color:#1E6FE0;border:1px solid rgba(30,111,224,.30)}
@@ -110,9 +111,10 @@ code{background:#EEF2F8;border:1px solid #DCE3ED;border-radius:5px;padding:1px 6
 .tag.d{background:rgba(224,144,43,.12);color:#B5771A;border:1px solid rgba(224,144,43,.32)}
 .fig{flex:1;display:flex;align-items:center;justify-content:center;margin-top:6px;min-height:0}
 svg{max-width:100%;height:auto}
-.fig svg{width:100%;height:auto;max-width:1080px;display:block;margin:auto}
-.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:14px;color:#5B6B82;justify-content:center}
-.legend span{display:inline-flex;align-items:center;gap:7px}
+.fig svg{width:100%;height:auto;max-width:1040px;display:block;margin:auto}
+.legend{display:flex;gap:26px;flex-wrap:wrap;margin-top:16px;font-size:14.5px;color:#5B6B82;justify-content:center}
+.legend span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.slide.center .legend{flex-wrap:nowrap;max-width:none;margin-top:24px}
 .sw{width:14px;height:14px;border-radius:4px;display:inline-block}
 .stat{font-size:58px;font-weight:800;line-height:1;letter-spacing:-1px}
 .stat.p{color:#1E6FE0}.stat.t{color:#0FA3A3}.stat.d{color:#E0902B}
@@ -121,9 +123,9 @@ svg{max-width:100%;height:auto}
 .slide.center .grid{width:100%;max-width:1000px}
 .pill{display:inline-block;background:#EEF2F8;border:1px solid #D7DFEA;border-radius:999px;
   padding:5px 13px;margin:4px 6px 4px 0;font-size:14px;color:#28456B}
-text{font-family:"Segoe UI",sans-serif;fill:#12263F}
-.svg-t{font-size:14px;font-weight:600}
-.svg-s{font-size:11.5px;fill:#5B6B82}
+text{font-family:"Liberation Sans",sans-serif;fill:#12263F}
+.svg-t{font-size:13.5px;font-weight:600}
+.svg-s{font-size:11px;fill:#5B6B82}
 .svg-lbl{font-size:12px;fill:#5B6B82;font-style:italic}
 """
 
